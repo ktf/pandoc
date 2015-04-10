@@ -1,5 +1,8 @@
 \documentclass[$if(fontsize)$$fontsize$,$endif$$if(handout)$handout,$endif$$if(beamer)$ignorenonframetext,$endif$$for(classoption)$$classoption$$sep$,$endfor$]{$documentclass$}
 
+%%\usepackage{draftwatermark}
+\usepackage{changepage}
+
 \usetheme{default}
 \beamertemplatenavigationsymbolsempty
 \hypersetup{pdfpagemode=UseNone} % don't show bookmarks on initial view
@@ -25,13 +28,15 @@ $endif$
 % Spacing in columns.
 \setlength{\tabcolsep}{2pt}
 
-\definecolor{background}{RGB}{255,255,255}
+\definecolor{background}{RGB}{252,255,255}
 \definecolor{foreground}{RGB}{24,24,24}
 \definecolor{title}{RGB}{107,174,214}
 \definecolor{gray}{RGB}{155,155,155}
 \definecolor{subtitle}{RGB}{102,255,204}
 \definecolor{hilight}{RGB}{102,255,204}
 \definecolor{vhilight}{RGB}{255,111,207}
+
+\setbeamercolor{background canvas}{bg=background}%transparent canvas
 
 \setbeamercolor{titlelike}{fg=title}
 \setbeamercolor{subtitle}{fg=subtitle}
@@ -75,6 +80,31 @@ $endif$
 \setbeamertemplate{footline}{%
     \raisebox{5pt}{\makebox[\paperwidth]{\hfill\makebox[20pt]{\color{gray}
           \scriptsize\insertframenumber}}}\hspace*{5pt}}
+
+\setbeamertemplate{title page}{
+
+{
+  \usebackgroundtemplate{\includegraphics[width=1.0\paperwidth]{images/Background.jpg}}
+}
+        \begin{picture}(0,0)
+
+            \put(-10,-220){%
+                \includegraphics[width=\paperwidth, height=\paperheight]{Background.jpg}}
+            \end{picture}
+\begin{mdframed}[tikzsetting={draw=black,fill=white,fill opacity=0.8,
+               line width=3pt},backgroundcolor=none,leftmargin=0,
+               rightmargin=0,innertopmargin=10pt]
+
+  \usebeamerfont{title}\inserttitle\par
+  \usebeamerfont{subtitle}\insertsubtitle\par
+  \bigskip
+  \usebeamerfont{author}\insertauthor\par
+  \usebeamerfont{institute}\insertinstitute\par
+  \usebeamerfont{date}\insertdate\par
+  \usebeamercolor[fg]{titlegraphic}\inserttitlegraphic
+\end{mdframed}
+
+    }
 
 
 \usepackage{amssymb,amsmath}

@@ -39,7 +39,7 @@ $endif$
 % nicer fonts
 \usepackage{fontspec}
 \setmainfont[Ligatures=TeX]{Helvetica Neue Light}
-\setbeamersize{text margin left=10pt,text margin right=10pt}
+\setbeamersize{text margin left=15pt,text margin right=15pt}
 
 \useinnertheme{circles}
 
